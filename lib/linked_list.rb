@@ -21,11 +21,13 @@ class LinkedList
 
   def append(node)
     @tail = node
+    @nextn = nil
     @node_c += 1
   end
 
 
   def prepend(node)
+    @nextn = @head
     @head = node
     @node_c += 1
   end
@@ -41,9 +43,9 @@ class LinkedList
   end
 
 
-#  def at(index)
-    # default index == 0
-#  end
+  def at(index)
+    default index == 0
+  end
 
 
 #  def pop

@@ -28,16 +28,16 @@ describe LinkedList do
 
   before :each do
     @list = LinkedList.new()
-    @nodea = Node.new("A", @nodeb)
+    @nodea = Node.new("A", nil)
       @list.prepend(@nodea)
-    @nodeb = Node.new("B", @nodec)
-      @list.append(@ndoeb)
+    @nodeb = Node.new("B", nil)
+      @list.append(@nodeb)
     @nodec = Node.new("C", nil)
-      @list.append(@ndoec)
+      @list.append(@nodec)
   end
 
   it "'LinkedList#append' method should add Node to the end of the list" do
-    expect(@list.tail).to eq @nodeb
+    expect(@list.tail).to eq @nodec
   end
 
 
@@ -52,7 +52,7 @@ describe LinkedList do
 
 
   it "'LinkedList#tail' method returns the last node of the list" do
-    expect(@list.tail).to eq @nodeb
+    expect(@list.tail).to eq @nodec
   end
 
   xit "'LinkedList#at' method returns the node at the index number 'n'" do
