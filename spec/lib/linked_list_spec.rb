@@ -1,90 +1,88 @@
-require "spec_helper"
-require "linked_list"
+require 'spec_helper'
+require 'linked_list'
 
-
-list = LinkedList.new()
-node = Node.new(nil, nil)
-nodea = Node.new("C", nil)
-  list.prepend(nodea)
-nodeb = Node.new("B", nodea)
-  list.prepend(nodeb)
-nodec = Node.new("A", nodeb)
-  list.prepend(nodec)
+# ------------------------------------------------------------------
 
 
 describe Node do
 
+  before :each do
+    @nodea = Node.new("A", nil)
+  end
+
   it "contains data" do
-    puts nodea == "A"
+    expect(@nodea.data).to eq("A")
   end
 
 
-  it "contains a link to the next node"
-  nodeb.@next == nodea
+  it "contains a reference to the next node" do
+    expect(@nodea.nextn).to eq(nil)
+  end
+
 end
+
+# -----------------------------------------------------------------
 
 
 describe LinkedList do
 
-  it "contains data" do
-    node.data.should == nil
+  before :each do
+    @list = LinkedList.new()
+    @nodea = Node.new("A", @nodeb)
+      @list.prepend(@nodea)
+    @nodeb = Node.new("B", @nodec)
+      @list.append(@ndoeb)
+    @nodec = Node.new("C", nil)
+      @list.append(@ndoec)
+  end
+
+  it "'LinkedList#append' method should add Node to the end of the list" do
+    expect(@list.tail).to eq @nodeb
   end
 
 
-  it "contains reference for the next node" do
-    node.nextn.should == nil
+  it "'LinkedList#prepend' method should add Node to the beginning of the list" do
+    expect(@list.head).to eq @nodea
   end
 
 
-  xit "'append' method should add Node to the end of the list" do
-    list.tail == new_node
+  it "'LinkedList#head' method returns the first node of the list" do
+    expect(@list.head).to eq @nodea
   end
 
 
-  xit "'prepend' method should add Node to the beginning of the list" do
-    list.head == new_node
+  it "'LinkedList#tail' method returns the last node of the list" do
+    expect(@list.tail).to eq @nodeb
   end
 
-
-  xit "'head' method returns the first node of the list" do
-    list.head == nodeb
+  xit "'LinkedList#at' method returns the node at the index number 'n'" do
+    expect(list.at(1)).to eq("B")
   end
 
-
-  xit "'tail' method returns the last node of the list" do
-    list.tail == nodeb
-  end
-
-  xit "'at' method returns the node at the index number 'n'" do
-    expect(list.at(1)) == "B"
-  end
-
-  xit "'pop' method removes the last element of the list" do
+  xit "'LinkedList#pop' method removes the last element of the list" do
     list.pop
-    list.tail == "B"
+    expect(list.tail).to eq("B")
   end
 
-  nodeb = Node.new("Z", nodea)
-    list.prepend(nodeb)
 
-  xit "'contains' method returns true if LinkedList contains the node passed through the method" do
-    list.contains("A") == true
+  xit "'LinkedList#contains' method returns true if LinkedList contains the node passed through the method" do
+    expect(list.contains("A")).to eq(true)
   end
 
-  xit "'contains' method returns false if LinkedList contains the node passed through the method 'contains'" do
-    list.contains("X") == false
+  xit "'LinkedList#contains' method returns false if LinkedList contains the node passed through the method 'contains'" do
+    expect(list.contains("X")).to eq(false)
   end
 
-  xit "'find' method returns the index of node containing data passed through the method 'it'" do
-    list.find("A") == 1
+  xit "'LinkedList#find' method returns the index of node containing data passed through the method 'it'" do
+    expect(list.find("A")).to eq(1)
   end
 
-  xit "'find' method returns 'nil' if data passed through the method 'it' does not exits in the LinkedList" do
-    list.find("X") == nil
+  xit "'LinkedList#find' method returns 'nil' if data passed through the method 'it' does not exits in the LinkedList" do
+    expect(list.find("X")).to eq(nil)
   end
 
-  xit "'to_s' method returns class LinkedList as a string" do
-    list.to_s == "ZAB"
+  xit "'LinkedList#to_s' method returns class LinkedList as a string" do
+    expect(list.to_s).to ("ZAB")
   end
 
 end

@@ -3,63 +3,66 @@ class Node
 
   def initialize(data, nextn)
     @data = data
-    @next = nextn
+    @nextn = nextn
   end
-
 end
 
 
+
 class LinkedList
-  attr_accessor :tail, :head
+  attr_accessor :tail, :head, :node, :node_c
 
   def initialize
-    tail = Node.new(nil, nil)
-    head = tail
+    @head = nil
+    @tail = nil
+    @node_c = 0  # not sure if this is needed?
   end
 
 
-  def append(new_node)
-    tail = new_node
+  def append(node)
+    @tail = node
+    @node_c += 1
   end
 
 
-  def prepend(new_node)
-    head = new_node
+  def prepend(node)
+    @head = node
+    @node_c += 1
   end
 
 
   def head
-    # ???
+    return @head
   end
 
 
   def tail
-    # ???
+    return @tail
   end
 
 
-  def at(index)
+#  def at(index)
     # default index == 0
-  end
+#  end
 
 
-  def pop
+#  def pop
     # ???
-  end
+#  end
 
 
-  def contains(input)
+#  def contains(input)
     # ???
-  end
+#  end
 
 
-  def find(input)
+#  def find(input)
     # ???
-  end
+#  end
 
 
-  def to_s
+#  def to_s
     # ???
-  end
+#  end
 
 end
